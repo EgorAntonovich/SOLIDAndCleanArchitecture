@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HR.LeaveManagement.Application.DTOs.LeaveRequest
+namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest
 {
     public interface ILeaveRequestDto
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HR.LeaveManagement.Application.Exceptions
+namespace HR.LeaveManagement.Application.Contracts.Persistence.Exceptions
 {
     public class BadRequestException : ApplicationException
     {

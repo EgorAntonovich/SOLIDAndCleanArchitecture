@@ -3,25 +3,30 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HR.LeaveManagement.Application.DTOs.LeaveRequest.Validators;
-using HR.LeaveManagement.Application.Exceptions;
-using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
-using HR.LeaveManagement.Application.Persistence.Contracts;
-using HR.LeaveManagement.Application.Responses;
+using HR.LeaveManagement.Application.Contracts.Persistence.Contracts.Infrastructure;
+using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest.Validators;
+using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveRequests.Requests.Commands;
+using HR.LeaveManagement.Application.Contracts.Persistence.Models;
+using HR.LeaveManagement.Application.Contracts.Persistence.Responses;
 using HR.LeaveManagement.Domain;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Commands
+namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveRequests.Handlers.Commands
 {
     public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveRequestCommand, BaseCommandResponse>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly IEmailSender _emailSender;
         private readonly IMapper _mapper;
 
-        public CreateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository, IMapper mapper)
+        public CreateLeaveRequestCommandHandler(
+            ILeaveRequestRepository leaveRequestRepository,
+            IMapper mapper,
+            IEmailSender emailSender)
         {
             _leaveRequestRepository = leaveRequestRepository;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
         
         public async Task<BaseCommandResponse> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
@@ -44,6 +49,23 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
             response.IsSuccess = true;
             response.Message = "Creation Successful";
             response.Id = leaveRequest.Id;
+
+            var email = new Email()
+            {
+                To = "egor.antonovich.97@gmail.com",
+                Body =
+                    $"Your leave request for {request.LeaveRequest.StartDate:D} to {request.LeaveRequest.EndDate:D}" +
+                    $"has been submitted successfully",
+                Subject = "Leave Request Submitted"
+            };
+            try
+            {
+                await _emailSender.SendEmail(email);
+            }
+            catch (Exception e)
+            {
+                /// Log or handle new exception
+            }
 
             return response;
         }
