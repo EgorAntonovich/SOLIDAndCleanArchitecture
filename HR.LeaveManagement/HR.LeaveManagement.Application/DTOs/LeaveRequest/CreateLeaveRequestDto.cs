@@ -1,7 +1,7 @@
 ﻿using System;
-using HR.LeaveManagement.Application.DTOs.Common;
+using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.Common;
 
-namespace HR.LeaveManagement.Application.DTOs.LeaveRequest
+namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest
 {
     public class CreateLeaveRequestDto : ILeaveRequestDto
     {

@@ -1,4 +1,4 @@
-﻿namespace HR.LeaveManagement.Application.DTOs.LeaveType
+﻿namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType
 {
     public class CreateLeaveTypeDto : ILeaveTypeDto
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FluentValidation.Results;
 
-namespace HR.LeaveManagement.Application.Exceptions
+namespace HR.LeaveManagement.Application.Contracts.Persistence.Exceptions
 {
     public class ValidationException : ApplicationException
     {

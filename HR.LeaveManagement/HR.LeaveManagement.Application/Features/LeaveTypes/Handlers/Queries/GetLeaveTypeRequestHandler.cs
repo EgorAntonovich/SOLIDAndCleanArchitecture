@@ -2,12 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HR.LeaveManagement.Application.DTOs.LeaveType;
-using HR.LeaveManagement.Application.Features.LeaveTypes.Requests.Queries;
-using HR.LeaveManagement.Application.Persistence.Contracts;
+using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType;
+using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveTypes.Requests.Queries;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Queries
+namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveTypes.Handlers.Queries
 {
     public class GetLeaveTypeRequestHandler : IRequestHandler<GetLeaveTypeListRequest, List<LeaveTypeDto>>
     {
