@@ -1,7 +1,7 @@
-﻿using HR.LeaveManagement.Application.DTOs.LeaveAllocation;
+﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Requests.Queries
+namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAllocations.Requests.Queries
 {
     public class GetLeaveAllocationDetailRequest : IRequest<LeaveAllocationDto>
     {

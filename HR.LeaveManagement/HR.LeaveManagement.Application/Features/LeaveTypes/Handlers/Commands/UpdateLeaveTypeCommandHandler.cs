@@ -1,16 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HR.LeaveManagement.Application.DTOs.LeaveType.Validators;
-using HR.LeaveManagement.Application.Exceptions;
-using HR.LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
-using HR.LeaveManagement.Application.Persistence.Contracts;
-using HR.LeaveManagement.Application.Responses;
+using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType.Validators;
+using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveTypes.Requests.Commands;
+using HR.LeaveManagement.Application.Contracts.Persistence.Responses;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands
+namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveTypes.Handlers.Commands
 {
     public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCommand, BaseCommandResponse>
     {

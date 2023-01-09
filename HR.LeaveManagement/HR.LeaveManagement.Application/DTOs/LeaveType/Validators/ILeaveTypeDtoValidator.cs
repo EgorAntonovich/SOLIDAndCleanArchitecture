@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HR.LeaveManagement.Application.DTOs.LeaveType.Validators
+namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType.Validators
 {
     public class ILeaveTypeDtoValidator : AbstractValidator<ILeaveTypeDto>
     {
