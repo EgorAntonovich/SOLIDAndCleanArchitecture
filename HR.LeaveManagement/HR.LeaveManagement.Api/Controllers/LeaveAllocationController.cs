@@ -1,4 +1,5 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation;
+using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest;
 using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAllocations.Requests.Commands;
 using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAllocations.Requests.Queries;
 using HR.LeaveManagement.Domain;
@@ -41,14 +42,14 @@ public class LeaveAllocationController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<ActionResult> Put([FromBody] LeaveAllocationDto leaveAllocationDto)
+    public async Task<ActionResult> Put([FromBody] UpdateLeaveAllocationDto leaveAllocationDto)
     {
         var command = new UpdateLeaveAllocationCommand { LeaveAllocation = leaveAllocationDto };
         var response = await _mediator.Send(command);
         return NoContent();
     }
     
-    [HttpDelete("{id")]
+    [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
     {
         var command = new DeleteLeaveAllocationCommand { Id = id };

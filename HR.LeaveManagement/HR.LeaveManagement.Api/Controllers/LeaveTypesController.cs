@@ -47,7 +47,7 @@ public class LeaveTypesController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id")]
+    [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
     {
         var command = new DeleteLeaveTypeCommand { Id = id };

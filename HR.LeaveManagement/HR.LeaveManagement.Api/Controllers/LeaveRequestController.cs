@@ -40,17 +40,27 @@ public class LeaveRequestController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> Put([FromBody] LeaveRequestDto leaveRequest)
+    public async Task<ActionResult> Put(int id, [FromBody] UpdateLeaveRequestDto leaveRequest)
     {
-        var command = new UpdateLeaveRequestCommand { LeaveRequest = leaveRequest };
+        var command = new UpdateLeaveRequestCommand {Id = id, LeaveRequest = leaveRequest };
         await _mediator.Send(command);
         return NoContent();
     }
 
-    [HttpDelete("{id")]
+    [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
     {
         var command = new DeleteLeaveRequestCommand() { Id = id };
+        await _mediator.Send(command);
+        return NoContent();
+    }
+
+    [HttpPut("changeapproval")]
+    public async Task<ActionResult> ChangeApproval( 
+        int id,
+        [FromBody] ChangeLeaveRequestApprovalDto changeLeaveRequestApprovalDto)
+    {
+        var command = new UpdateLeaveRequestCommand { Id = id,ChangeLeaveRequestApproval = changeLeaveRequestApprovalDto };
         await _mediator.Send(command);
         return NoContent();
     }
