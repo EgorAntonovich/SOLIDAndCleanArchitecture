@@ -32,7 +32,7 @@ public class LeaveRequestController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> Post([FromBody] LeaveRequestDto leaveRequest)
+    public async Task<ActionResult> Post([FromBody] CreateLeaveRequestDto leaveRequest)
     {
         var command = new CreateLeaveRequestCommand { LeaveRequest = leaveRequest };
         var response = await _mediator.Send(command);

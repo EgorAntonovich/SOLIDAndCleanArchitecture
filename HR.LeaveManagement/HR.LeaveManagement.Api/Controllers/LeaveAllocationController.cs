@@ -33,7 +33,7 @@ public class LeaveAllocationController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<LeaveAllocationDto>> Post([FromBody] LeaveAllocationDto leaveAllocationDto)
+    public async Task<ActionResult<LeaveAllocationDto>> Post([FromBody] CreateLeaveAllocationDto leaveAllocationDto)
     {
         var command = new CreateLeaveAllocationCommand { LeaveAllocation = leaveAllocationDto };
         var response = await _mediator.Send(command);

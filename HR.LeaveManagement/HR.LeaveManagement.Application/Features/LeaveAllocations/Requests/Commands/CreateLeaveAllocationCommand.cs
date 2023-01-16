@@ -6,6 +6,6 @@ namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAll
 {
     public class CreateLeaveAllocationCommand : IRequest<BaseCommandResponse>
     {
-        public LeaveAllocationDto LeaveAllocation { get; set; }
+        public CreateLeaveAllocationDto LeaveAllocation { get; set; }
     }
 }
