@@ -6,6 +6,6 @@ namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveReq
 {
     public class CreateLeaveRequestCommand : IRequest<BaseCommandResponse>
     {
-        public LeaveRequestDto LeaveRequest { get; set; }
+        public CreateLeaveRequestDto LeaveRequest { get; set; }
     }
 }

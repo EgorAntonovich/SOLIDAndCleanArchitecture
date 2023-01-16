@@ -7,7 +7,7 @@ namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveReq
     public class UpdateLeaveRequestCommand : IRequest<BaseCommandResponse>
     {
         public int Id { get; set; }
-        public LeaveRequestDto? LeaveRequest { get; set; }
+        public UpdateLeaveRequestDto? LeaveRequest { get; set; }
 
         public ChangeLeaveRequestApprovalDto? ChangeLeaveRequestApproval { get; set; }
     }
