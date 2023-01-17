@@ -1,6 +1,4 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.Common;
-
-namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation
+﻿namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation
 {
     public class CreateLeaveAllocationDto : ILeaveAllocationDto
     {

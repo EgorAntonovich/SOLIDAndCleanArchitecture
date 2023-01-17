@@ -1,8 +1,8 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation;
-using HR.LeaveManagement.Application.Contracts.Persistence.Responses;
+﻿using HR.LeaveManagement.Application.DTOs.LeaveAllocation;
+using HR.LeaveManagement.Application.Responses;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAllocations.Requests.Commands
+namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Requests.Commands
 {
     public class CreateLeaveAllocationCommand : IRequest<BaseCommandResponse>
     {

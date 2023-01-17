@@ -1,6 +1,6 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest;
-using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveRequests.Requests.Commands;
-using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveRequests.Requests.Queries;
+﻿using HR.LeaveManagement.Application.DTOs.LeaveRequest;
+using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
+using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

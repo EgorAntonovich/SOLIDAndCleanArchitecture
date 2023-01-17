@@ -1,8 +1,8 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType;
-using HR.LeaveManagement.Application.Contracts.Persistence.Responses;
+﻿using HR.LeaveManagement.Application.DTOs.LeaveType;
+using HR.LeaveManagement.Application.Responses;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveTypes.Requests.Commands
+namespace HR.LeaveManagement.Application.Features.LeaveTypes.Requests.Commands
 {
     public class UpdateLeaveTypeCommand : IRequest<BaseCommandResponse>
     {

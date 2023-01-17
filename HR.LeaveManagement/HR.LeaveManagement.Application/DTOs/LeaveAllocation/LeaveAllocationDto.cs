@@ -1,7 +1,7 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.Common;
-using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType;
+﻿using HR.LeaveManagement.Application.DTOs.Common;
+using HR.LeaveManagement.Application.DTOs.LeaveType;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation
+namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation
 {
     public class LeaveAllocationDto : BaseDto, ILeaveAllocationDto
     {

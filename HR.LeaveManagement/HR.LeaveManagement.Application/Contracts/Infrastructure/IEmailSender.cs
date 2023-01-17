@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using HR.LeaveManagement.Application.Contracts.Persistence.Models;
+using HR.LeaveManagement.Application.Models;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Contracts.Infrastructure
+namespace HR.LeaveManagement.Application.Contracts.Infrastructure
 {
     public interface IEmailSender
     {

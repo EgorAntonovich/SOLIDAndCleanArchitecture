@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Responses
+namespace HR.LeaveManagement.Application.Responses
 {
     public class BaseCommandResponse
     {

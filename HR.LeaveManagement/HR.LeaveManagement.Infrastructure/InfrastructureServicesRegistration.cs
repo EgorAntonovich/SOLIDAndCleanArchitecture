@@ -1,5 +1,6 @@
-﻿using HR.LeaveManagement.Application.Contracts.Persistence.Contracts.Infrastructure;
-using HR.LeaveManagement.Application.Contracts.Persistence.Models;
+﻿using HR.LeaveManagement.Application.Contracts.Infrastructure;
+using HR.LeaveManagement.Application.Models;
+using HR.LeaveManagement.Infrastructure.Email;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
