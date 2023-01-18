@@ -8,6 +8,13 @@ public class MockLeaveTypeRepositories
 {
     public static Mock<ILeaveTypeRepository> GetLeaveTypeRepository()
     {
+        int id = 1;
+        var leaveType = new LeaveType
+        {
+            Id = 1,
+            DefaultDays = 10,
+            Name = "Test Vacation"
+        };
         var leaveTypes = new List<LeaveType>
         {
             new LeaveType
@@ -33,6 +40,8 @@ public class MockLeaveTypeRepositories
         var moqRepo = new Mock<ILeaveTypeRepository>();
 
         moqRepo.Setup(r => r.GetAll()).ReturnsAsync(leaveTypes);
+
+        moqRepo.Setup(r => r.Get(id)).ReturnsAsync(leaveType);
 
         moqRepo.Setup(r => r.Add(It.IsAny<LeaveType>())).ReturnsAsync((LeaveType leaveType) =>
         {
