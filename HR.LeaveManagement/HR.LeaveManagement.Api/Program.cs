@@ -1,3 +1,4 @@
+using HR.LeaveManagement.Application;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Infrastructure;
 using HR.LeaveManagement.Persistence;

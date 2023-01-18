@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation;
-using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest;
-using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType;
+using HR.LeaveManagement.Application.DTOs.LeaveAllocation;
+using HR.LeaveManagement.Application.DTOs.LeaveRequest;
+using HR.LeaveManagement.Application.DTOs.LeaveType;
 using HR.LeaveManagement.Domain;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Profiles
+namespace HR.LeaveManagement.Application.Profiles
 {
     public class MappingProfile : Profile
     {

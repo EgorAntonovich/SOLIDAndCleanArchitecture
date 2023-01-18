@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence
+namespace HR.LeaveManagement.Application
 {
     public static class ApplicationServicesRegistration
     {

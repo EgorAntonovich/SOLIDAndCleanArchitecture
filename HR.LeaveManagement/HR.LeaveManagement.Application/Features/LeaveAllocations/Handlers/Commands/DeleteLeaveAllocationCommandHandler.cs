@@ -1,12 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using HR.LeaveManagement.Application.Contracts.Persistence;
-using HR.LeaveManagement.Application.Contracts.Persistence.Exceptions;
-using HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAllocations.Requests.Commands;
+using HR.LeaveManagement.Application.Exceptions;
+using HR.LeaveManagement.Application.Features.LeaveAllocations.Requests.Commands;
 using HR.LeaveManagement.Domain;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Features.LeaveAllocations.Handlers.Commands
+namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Handlers.Commands
 {
     public class DeleteLeaveAllocationCommandHandler : IRequestHandler<DeleteLeaveAllocationCommand>
     {

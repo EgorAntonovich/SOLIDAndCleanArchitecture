@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using HR.LeaveManagement.Application.Contracts.Persistence.Contracts.Infrastructure;
-using HR.LeaveManagement.Application.Contracts.Persistence.Models;
+using HR.LeaveManagement.Application.Contracts.Infrastructure;
+using HR.LeaveManagement.Application.Models;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace HR.LeaveManagement.Infrastructure
+namespace HR.LeaveManagement.Infrastructure.Email
 {
     public class EmailSender : IEmailSender
     {
@@ -15,7 +15,7 @@ namespace HR.LeaveManagement.Infrastructure
         {
             _emailSettings = emailSettings.Value;
         }
-        public async Task<bool> SendEmail(Email email)
+        public async Task<bool> SendEmail(Application.Models.Email email)
         {
             var client = new SendGridClient(_emailSettings.ApiKey);
             var to = new EmailAddress(email.To);

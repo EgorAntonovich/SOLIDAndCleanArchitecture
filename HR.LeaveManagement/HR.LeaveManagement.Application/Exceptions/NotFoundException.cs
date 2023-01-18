@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.Exceptions
+namespace HR.LeaveManagement.Application.Exceptions
 {
     public class NotFoundException : ApplicationException
     {

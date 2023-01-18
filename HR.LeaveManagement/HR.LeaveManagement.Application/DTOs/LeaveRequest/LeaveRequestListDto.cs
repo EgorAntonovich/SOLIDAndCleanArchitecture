@@ -1,8 +1,8 @@
 ﻿using System;
-using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.Common;
-using HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveType;
+using HR.LeaveManagement.Application.DTOs.Common;
+using HR.LeaveManagement.Application.DTOs.LeaveType;
 
-namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveRequest
+namespace HR.LeaveManagement.Application.DTOs.LeaveRequest
 {
     public class LeaveRequestListDto : BaseDto
     {

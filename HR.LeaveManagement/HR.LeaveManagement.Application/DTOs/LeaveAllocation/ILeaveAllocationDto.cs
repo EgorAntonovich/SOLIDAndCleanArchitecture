@@ -1,4 +1,4 @@
-﻿namespace HR.LeaveManagement.Application.Contracts.Persistence.DTOs.LeaveAllocation
+﻿namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation
 {
     public interface ILeaveAllocationDto
     {
