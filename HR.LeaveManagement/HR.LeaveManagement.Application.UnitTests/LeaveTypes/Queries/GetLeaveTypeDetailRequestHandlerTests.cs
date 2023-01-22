@@ -31,9 +31,8 @@ public class GetLeaveTypeDetailRequestHandlerTests
     [Fact]
     public async Task GetLeaveTypeDetailTest()
     {
-        const int id = 1;
         var handler = new GetLeaveTypeDetailRequestHandler(_mockRepo.Object, _mapper);
-        var result = await handler.Handle(new GetLeaveTypeDetailRequest { Id = id }, CancellationToken.None);
+        var result = await handler.Handle(new GetLeaveTypeDetailRequest() { Id = 1 }, CancellationToken.None);
         
         result.ShouldBeOfType<LeaveTypeDto>();
         result.ShouldNotBeNull();

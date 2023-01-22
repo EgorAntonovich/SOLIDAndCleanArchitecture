@@ -39,7 +39,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
             return await _dbContext.Set<T>().FindAsync(Id);
         }
 
-        public async Task<IReadOnlyList<T>> GetAll()
+        public async Task<List<T>> GetAll()
         {
             return await _dbContext.Set<T>().ToListAsync();
         }

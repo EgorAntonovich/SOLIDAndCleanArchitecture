@@ -27,6 +27,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands
             var response = new BaseCommandResponse();
             var validator = new UpdateLeaveTypeDtoValidator();
             var validationResult = await validator.ValidateAsync(request.LeaveType, cancellationToken);
+            var leaveType = await _leaveTypeRepository.Get(request.LeaveType.Id);
 
             if (validationResult.IsValid == false)
             {
@@ -34,8 +35,6 @@ namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands
                 response.Message = "Update Failed";
                 response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
             }
-
-            var leaveType = await _leaveTypeRepository.Get(request.LeaveType.Id);
 
             _mapper.Map(request.LeaveType, leaveType);
 
