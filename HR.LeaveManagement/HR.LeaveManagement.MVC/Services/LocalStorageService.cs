@@ -3,9 +3,9 @@ using HR.LeaveManagement.MVC.Contracts;
 
 namespace HR.LeaveManagement.MVC.Services;
 
-public class LocalStorageService : ILocalStorageService
+public class LocalStorageService : ILocalStorageServices
 {
-    private LocalStorage _localStorage;
+    private LocalStorage _storage;
 
     public LocalStorageService()
     {
@@ -15,31 +15,30 @@ public class LocalStorageService : ILocalStorageService
             AutoSave = true,
             Filename = "HR.LEAVEMGMT"
         };
+        _storage = new LocalStorage(config);
+    }
 
-        _localStorage = new LocalStorage(config);
+    public bool Exists(string key)
+    {
+        return _storage.Exists(key);
     }
 
     public void ClearStorage(List<string> keys)
     {
         foreach (var key in keys)
         {
-            _localStorage.Remove(key);
+            _storage.Remove(key);
         }
-    }
-
-    public void SetStorageValue<T>(string key, T value)
-    {
-        _localStorage.Store(key, value);
-        _localStorage.Persist();
     }
 
     public T GetStorageValue<T>(string key)
     {
-        return _localStorage.Get<T>(key);
+        return _storage.Get<T>(key);
     }
 
-    public bool Exists(string key)
+    public void SetStorageValue<T>(string key, T value)
     {
-        return _localStorage.Exists(key);
+        _storage.Store(key, value);
+        _storage.Persist();
     }
 }
