@@ -36,38 +36,40 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
             var validator = new CreateLeaveRequestDtoValidator(_leaveRequestRepository);
             var validationResult = await validator.ValidateAsync(request.LeaveRequest, cancellationToken);
 
-            if (validationResult.IsValid == false)
+            if (!validationResult.IsValid)
             {
                 response.IsSuccess = false;
                 response.Message = "Creation Failed";
                 response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
             }
+            else
+            {
+                var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequest);
 
-            var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequest);
-
-            leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
+                leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
             
-            response.IsSuccess = true;
-            response.Message = "Creation Successful";
-            response.Id = leaveRequest.Id;
+                response.IsSuccess = true;
+                response.Message = "Creation Successful";
+                response.Id = leaveRequest.Id;
 
-            var email = new Email()
-            {
-                To = "egor.antonovich.97@gmail.com",
-                Body =
-                    $"Your leave request for {request.LeaveRequest.StartDate:D} to {request.LeaveRequest.EndDate:D}" +
-                    $"has been submitted successfully",
-                Subject = "Leave Request Submitted"
-            };
-            try
-            {
-                await _emailSender.SendEmail(email);
+                var email = new Email()
+                {
+                    To = "egor.antonovich.97@gmail.com",
+                    Body =
+                        $"Your leave request for {request.LeaveRequest.StartDate:D} to {request.LeaveRequest.EndDate:D}" +
+                        $"has been submitted successfully",
+                    Subject = "Leave Request Submitted"
+                };
+                try
+                {
+                    await _emailSender.SendEmail(email);
+                }
+                catch (Exception e)
+                {
+                    /// Log or handle new exception
+                }
             }
-            catch (Exception e)
-            {
-                /// Log or handle new exception
-            }
-
+            
             return response;
         }
     }

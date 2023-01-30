@@ -1,4 +1,4 @@
-﻿namespace HR.LeaveManagement.MVC.Services;
+﻿namespace HR.LeaveManagement.MVC.Services.Base;
 
 public partial class Client : IClient
 {

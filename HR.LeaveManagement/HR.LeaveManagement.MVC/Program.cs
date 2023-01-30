@@ -1,17 +1,36 @@
 using System.Reflection;
 using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Services;
-using ILeaveTypeService = HR.LeaveManagement.MVC.Contracts.ILeaveTypeService;
+using HR.LeaveManagement.MVC.Services.Base;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44348"));
-builder.Services.AddControllersWithViews();
+
+// Add services to the container.
+builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:7208"));
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
-builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();
+builder.Services.AddSingleton<ILocalStorageServices, LocalStorageService>();
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-app.MapGet("/", () => "Hello World!");
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

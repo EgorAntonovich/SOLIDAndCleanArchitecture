@@ -30,20 +30,22 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Handlers.Comm
             var validator = new CreateLeaveAllocationDtoValidator(_leaveAllocationRepository);
             var validationResult = await validator.ValidateAsync(request.LeaveAllocation, cancellationToken);
 
-            if (validationResult.IsValid == false)
+            if (!validationResult.IsValid)
             {
                 response.IsSuccess = false;
                 response.Message = "Creation Failed";
                 response.Errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
             }
+            else
+            {
+                var leaveAllocation = _mapper.Map<LeaveAllocation>(request.LeaveAllocation);
 
-            var leaveAllocation = _mapper.Map<LeaveAllocation>(request.LeaveAllocation);
-
-            leaveAllocation = await _leaveAllocationRepository.Add(leaveAllocation);
+                leaveAllocation = await _leaveAllocationRepository.Add(leaveAllocation);
             
-            response.IsSuccess = true;
-            response.Message = "Creation Successful!";
-            response.Id = leaveAllocation.Id;
+                response.IsSuccess = true;
+                response.Message = "Creation Successful!";
+                response.Id = leaveAllocation.Id;
+            }
 
             return response;
         }
