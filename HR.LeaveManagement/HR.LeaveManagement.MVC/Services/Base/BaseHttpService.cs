@@ -38,6 +38,7 @@ public class BaseHttpService
     protected void AddBearerToken()
     {
         if (_localStorageServices.Exists("token"))
-            _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _localStorageServices.GetStorageValue<string>("token"));
+            _client.HttpClient.DefaultRequestHeaders.Authorization = 
+                new AuthenticationHeaderValue("Bearer", _localStorageServices.GetStorageValue<string>("token"));
     }
 }

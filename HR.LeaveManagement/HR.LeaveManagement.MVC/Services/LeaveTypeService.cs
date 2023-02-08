@@ -2,6 +2,7 @@
 using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Models.LeaveType;
 using HR.LeaveManagement.MVC.Services.Base;
+using IClient = HR.LeaveManagement.MVC.Services.Base.IClient;
 
 
 namespace HR.LeaveManagement.MVC.Services;
@@ -21,12 +22,14 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
 
     public async Task<List<LeaveTypeViewModel>> GetLeaveTypes()
     {
+        AddBearerToken();
         var leaveTypes = await _client.LeaveTypesAllAsync();
         return _mapper.Map<List<LeaveTypeViewModel>>(leaveTypes);
     }
 
     public async Task<LeaveTypeViewModel> GetLeaveTypeDetails(int id)
     {
+        AddBearerToken();
         var leaveType = await _client.LeaveTypesGETAsync(id);
         return _mapper.Map<LeaveTypeViewModel>(leaveType);
     }
@@ -37,6 +40,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
         {
             var response = new Response<int>();
             CreateLeaveTypeDto createLeaveTypeDto = _mapper.Map<CreateLeaveTypeDto>(leaveTypeViewModel);
+            AddBearerToken();
             var apiResponse = await _client.LeaveTypesPOSTAsync(createLeaveTypeDto);
             if (apiResponse.IsSuccess)
             {
@@ -64,6 +68,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
         try
         {
             LeaveTypeDto leaveTypeDto = _mapper.Map<LeaveTypeDto>(leaveTypeViewModel);
+            AddBearerToken();
             await _client.LeaveTypesPUTAsync(id.ToString(), leaveTypeDto);
             return new Response<int>() { Success = true };
         }
@@ -77,6 +82,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
         try
         {
+            AddBearerToken();
             await _client.LeaveTypesDELETEAsync(id);
             return new Response<int> { Success = true };
         }

@@ -4,11 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Models.LeaveType;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.MVC.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeService _leaveTypeService;
@@ -19,6 +23,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         }
 
         // GET: LeaveTypes
+        [HttpGet]
         public async Task<ActionResult> Index()
         {
             var model = await _leaveTypeService.GetLeaveTypes();
@@ -26,6 +31,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         }
 
         // // GET: LeaveTypes/Details/5
+        [HttpGet("{id}")]
         public async Task<ActionResult> Details(int id)
         {
             var model = await _leaveTypeService.GetLeaveTypeDetails(id);
