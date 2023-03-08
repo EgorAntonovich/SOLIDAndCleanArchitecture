@@ -12,8 +12,8 @@ public class GetLeaveAllocationDetailsQueryHandler : IRequestHandler<GetLeaveAll
 
     public GetLeaveAllocationDetailsQueryHandler(ILeaveAllocationRepository leaveAllocationRepository, IMapper mapper)
     {
-        _leaveAllocationRepository = leaveAllocationRepository;
-        _mapper = mapper;
+        this._leaveAllocationRepository = leaveAllocationRepository;
+        this._mapper = mapper;
     }
 
     public async Task<LeaveAllocationDetailsDto> Handle(GetLeaveAllocationDetailsQuery request, CancellationToken cancellationToken)
