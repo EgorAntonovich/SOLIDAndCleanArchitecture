@@ -20,6 +20,7 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
     {
         // Validate incoming data
         
+        
         // Convert to domain entity
         var leaveTypeToUpdate = _mapper.Map<LeaveType>(request);
 

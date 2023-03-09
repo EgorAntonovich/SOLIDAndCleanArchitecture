@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
+using HR.LeaveManagementSystem.Application.Exeptions;
+using HR.LeaveManagementSystem.Domain;
 using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetLeaveRequestDetails;
@@ -19,6 +21,12 @@ public class GetLeaveRequestDetailsQueryHandler : IRequestHandler<GetLeaveReques
     {
         // Query the database
         var leaveRequestWithDetails = await _leaveRequestRepository.GetByIdAsync(request.Id);
+        
+        // Verify that records exists
+        if (leaveRequestWithDetails == null)
+        {
+            throw new NotFoundException(nameof(LeaveRequest), request.Id);
+        }
 
         // Convert data object to DTO object
         var data = _mapper.Map<LeaveRequestDetailsDto>(leaveRequestWithDetails);
