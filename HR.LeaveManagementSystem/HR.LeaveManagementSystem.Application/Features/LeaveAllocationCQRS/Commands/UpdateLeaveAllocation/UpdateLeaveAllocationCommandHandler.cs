@@ -19,7 +19,7 @@ public class UpdateLeaveAllocationCommandHandler : IRequestHandler<UpdateLeaveAl
     public async Task<Unit> Handle(UpdateLeaveAllocationCommand request, CancellationToken cancellationToken)
     {
         // Verify incoming data
-        
+
         // Convert to domain entity
         var leaveAllocationToUpdate = _mapper.Map<LeaveAllocation>(request);
 

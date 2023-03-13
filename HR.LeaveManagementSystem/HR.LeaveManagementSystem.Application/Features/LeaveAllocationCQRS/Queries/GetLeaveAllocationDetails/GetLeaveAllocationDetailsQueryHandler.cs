@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
+using HR.LeaveManagementSystem.Application.Exceptions;
 using HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Queries.GetAllLeaveAllocations;
+using HR.LeaveManagementSystem.Domain;
 using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Queries.GetLeaveAllocationDetails;
@@ -20,6 +22,12 @@ public class GetLeaveAllocationDetailsQueryHandler : IRequestHandler<GetLeaveAll
     {
         // Query the Database
         var leaveAllocationWithDetails = await _leaveAllocationRepository.GetByIdAsync(request.Id);
+        
+        // Verify that records exists
+        if (leaveAllocationWithDetails == null)
+        {
+            throw new NotFoundException(nameof(LeaveAllocation), request.Id);
+        }
 
         // Convert data object to DTO object
         var data = _mapper.Map<LeaveAllocationDetailsDto>(leaveAllocationWithDetails);

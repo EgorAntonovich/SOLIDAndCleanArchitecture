@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
+using HR.LeaveManagementSystem.Application.Exceptions;
 using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetAllLeaveRequests;
 using HR.LeaveManagementSystem.Domain;
 using MediatR;
@@ -20,6 +22,13 @@ public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveReque
     public async Task<int> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
     {
         // Validate incoming data
+        var validator = new CreateLeaveRequestCommandValidator();
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+        if (!validationResult.IsValid)
+        {
+            throw new BadRequestException("Invalid LeaveRequest type", validationResult);
+        }
         
         // Convert to domain entity object
         var leaveRequestToCreate = _mapper.Map<LeaveRequest>(request);
