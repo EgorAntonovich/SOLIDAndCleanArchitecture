@@ -1,4 +1,4 @@
-﻿namespace HR.LeaveManagementSystem.Application.Exeptions;
+﻿namespace HR.LeaveManagementSystem.Application.Exceptions;
 
 public class NotFoundException : Exception
 {

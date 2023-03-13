@@ -1,5 +1,5 @@
 ﻿using HR.LeaveManagementSystem.Application.Contracts.Persistence;
-using HR.LeaveManagementSystem.Application.Exeptions;
+using HR.LeaveManagementSystem.Application.Exceptions;
 using HR.LeaveManagementSystem.Domain;
 using MediatR;
 
