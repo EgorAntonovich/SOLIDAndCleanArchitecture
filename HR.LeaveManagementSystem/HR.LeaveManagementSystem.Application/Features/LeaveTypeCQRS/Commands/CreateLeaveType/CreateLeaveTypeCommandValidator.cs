@@ -10,6 +10,8 @@ public class CreateLeaveTypeCommandValidator : AbstractValidator<CreateLeaveType
     public CreateLeaveTypeCommandValidator(ILeaveTypeRepository leaveTypeRepository)
     {
         RuleFor(command => command.Name)
+            .MustAsync(LeaveTypeAlreadyExists)
+            .WithMessage("This LeaveType name already exists.")
             .NotEmpty()
             .WithMessage("{PropertyName} is required")
             .NotNull()
@@ -32,5 +34,11 @@ public class CreateLeaveTypeCommandValidator : AbstractValidator<CreateLeaveType
     private Task<bool> LeaveTypeNameUnique(CreateLeaveTypeCommand command, CancellationToken token)
     {
         return _leaveTypeRepository.IsLeaveTypeNameUnique(command.Name);
+    }
+
+    private async Task<bool> LeaveTypeAlreadyExists(string name, CancellationToken token)
+    {
+        var leaveType = await _leaveTypeRepository.GetAsync();
+        return leaveType.All(l => l.Name != name);
     }
 }
