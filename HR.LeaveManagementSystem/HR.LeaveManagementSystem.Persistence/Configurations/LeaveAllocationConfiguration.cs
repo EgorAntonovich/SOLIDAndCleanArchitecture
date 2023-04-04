@@ -11,8 +11,9 @@ public class LeaveAllocationConfiguration : IEntityTypeConfiguration<LeaveAlloca
         builder.HasData(
             new LeaveAllocation
             {
+                Id = 1,
                 NumberOfDays = 10,
-                LeaveType = new LeaveType(),
+                LeaveTypeId = 1,
                 Period = 100,
             });
     }

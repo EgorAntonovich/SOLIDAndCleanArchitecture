@@ -11,9 +11,9 @@ public class LeaveRequestConfiguration : IEntityTypeConfiguration<LeaveRequest>
         builder.HasData(
             new LeaveRequest
             {
+                Id = 1,
                 StartDate = DateTime.Now,
                 EndDate = DateTime.MaxValue,
-                LeaveType = new LeaveType(),
                 LeaveTypeId = 1,
                 DateRequested = DateTime.Now,
                 RequestComments = "blablabla",
