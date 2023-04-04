@@ -3,11 +3,7 @@ using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Commands.CreateLeaveAllocation;
 
-public class CreateLeaveAllocationCommand : IRequest<int>
+public class CreateLeaveAllocationCommand : IRequest<Unit>
 {
-    public int NumberOfDays { get; set; }
-    
-    public LeaveType? LeaveType { get; set; }
-    
-    public int Period { get; set; }
+    public int LeaveTypeId { get; set; }
 }

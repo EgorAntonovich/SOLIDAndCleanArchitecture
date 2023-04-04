@@ -2,4 +2,7 @@
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Queries.GetLeaveAllocationDetails;
 
-public record GetLeaveAllocationDetailsQuery(int Id) : IRequest<LeaveAllocationDetailsDto>;
+public class GetLeaveAllocationDetailsQuery : IRequest<LeaveAllocationDetailsDto>
+{
+    public int Id { get; set; }
+}

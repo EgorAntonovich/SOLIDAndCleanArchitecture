@@ -38,7 +38,7 @@ namespace HR.LeaveManagementSystem.Api.Controllers
         }
         
         // GET : api/<LeaveTypeController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<LeaveRequestDetailsDto>> Get(int id)
         {
             var leaveRequestDetail = await _mediator.Send(new GetLeaveRequestDetailsQuery(id));
@@ -57,7 +57,7 @@ namespace HR.LeaveManagementSystem.Api.Controllers
         }
         
         // PUT : api/<LeaveTypeController>
-        [HttpPut("{id}")]
+        [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(400)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -69,7 +69,7 @@ namespace HR.LeaveManagementSystem.Api.Controllers
         }
         
         // Delete : api/<LeaveTypeController>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
