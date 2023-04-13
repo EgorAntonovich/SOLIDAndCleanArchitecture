@@ -1,19 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.CancelLeaveRequest;
+using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.ChangeLeaveRequestApproval;
 using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.CreateLeaveRequest;
 using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.DeleteLeaveRequest;
 using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.UpdateLeaveRequest;
 using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetAllLeaveRequests;
 using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetLeaveRequestDetails;
-using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Commands.CreateLeaveType;
-using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Commands.DeleteLeaveType;
-using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Commands.UpdateLeaveType;
-using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Queries.GetAllLeaveTypes;
-using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Queries.GetLeaveTypeDetails;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagementSystem.Api.Controllers
@@ -41,7 +33,7 @@ namespace HR.LeaveManagementSystem.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<LeaveRequestDetailsDto>> Get(int id)
         {
-            var leaveRequestDetail = await _mediator.Send(new GetLeaveRequestDetailsQuery(id));
+            var leaveRequestDetail = await _mediator.Send(new GetLeaveRequestDetailsQuery() {Id = id});
             return Ok(leaveRequestDetail);
         }
         
@@ -68,6 +60,32 @@ namespace HR.LeaveManagementSystem.Api.Controllers
             return NoContent();
         }
         
+        // PUT : api/<LeaveTypeController>/CancelRequest/
+        [HttpPut]
+        [Route("CancelRequest")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> CancelRequest(CancelLeaveRequestCommand cancelLeaveRequestCommand)
+        {
+            await _mediator.Send(cancelLeaveRequestCommand);
+            return NoContent();
+        }
+        
+        // PUT : api/<LeaveTypeController>/UpdateApproval/
+        [HttpPut]
+        [Route("UpdateApproval")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> UpdateApproval(ChangeLeaveRequestApprovalCommand changeLeaveRequestApprovalCommand)
+        {
+            await _mediator.Send(changeLeaveRequestApprovalCommand);
+            return NoContent();
+        }
+
         // Delete : api/<LeaveTypeController>
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

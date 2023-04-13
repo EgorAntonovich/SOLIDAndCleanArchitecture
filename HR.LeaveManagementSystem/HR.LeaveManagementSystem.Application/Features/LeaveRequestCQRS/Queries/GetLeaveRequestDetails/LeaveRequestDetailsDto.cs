@@ -4,13 +4,11 @@ namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries
 
 public class LeaveRequestDetailsDto
 {
-    public int Id { get; set; }
-    
     public DateTime StartDay { get; set; }
 
     public DateTime EndDate { get; set; }
     
-    public LeaveType? LeaveType { get; set; }
+    public LeaveType LeaveType { get; set; }
     
     public int LeaveTypeId { get; set; }
     
@@ -22,9 +20,7 @@ public class LeaveRequestDetailsDto
     
     public bool Cancelled { get; set; }
 
-    public string RequestingEmployeeId { get; set; } = string.Empty;
+    public string RequestingEmployeeId { get; set; }
     
-    public DateTime? DateCreated { get; set; }
-    
-    public DateTime? DateModified { get; set; }
+    public DateTime? DateActioned { get; set; }
 }
