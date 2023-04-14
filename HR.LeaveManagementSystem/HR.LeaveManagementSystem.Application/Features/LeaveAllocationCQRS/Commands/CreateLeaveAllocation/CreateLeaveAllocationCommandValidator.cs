@@ -1,26 +1,24 @@
 ﻿using FluentValidation;
+using HR.LeaveManagementSystem.Application.Contracts.Persistence;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Commands.CreateLeaveAllocation;
 
 public class CreateLeaveAllocationCommandValidator : AbstractValidator<CreateLeaveAllocationCommand>
 {
-    public CreateLeaveAllocationCommandValidator()
+    private readonly ILeaveTypeRepository _leaveTypeRepository;
+    public CreateLeaveAllocationCommandValidator(ILeaveTypeRepository leaveTypeRepository)
     {
-        RuleFor(command => command.LeaveType)
-            .NotNull()
-            .NotEmpty()
-            .WithMessage("{PropertyName} is required");
+        _leaveTypeRepository = leaveTypeRepository;
 
-        RuleFor(command => command.NumberOfDays)
-            .LessThan(1)
-            .WithMessage("{PropertyName} can't be less than 1.")
-            .GreaterThan(100)
-            .WithMessage("{PropertyName} can't be more than 100");
-        
-        RuleFor(command => command.Period)
-            .LessThan(1)
-            .WithMessage("{PropertyName} can't be less than 1.")
-            .GreaterThan(100)
-            .WithMessage("{PropertyName} can't be more than 100");
+        RuleFor(p => p.LeaveTypeId)
+            .GreaterThan(0)
+            .MustAsync(LeaveTypeMustExists)
+            .WithMessage("{PropertyName does not exists");
+    }
+
+    private async Task<bool> LeaveTypeMustExists(int id, CancellationToken token)
+    {
+        var leaveType = await _leaveTypeRepository.GetByIdAsync(id);
+        return leaveType != null;
     }
 }

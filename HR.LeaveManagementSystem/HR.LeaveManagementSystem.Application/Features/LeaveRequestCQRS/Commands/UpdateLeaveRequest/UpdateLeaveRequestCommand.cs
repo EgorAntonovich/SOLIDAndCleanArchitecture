@@ -1,16 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Shared;
 using HR.LeaveManagementSystem.Domain;
 using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.UpdateLeaveRequest;
 
-public class UpdateLeaveRequestCommand : IRequest<Unit>
+public class UpdateLeaveRequestCommand : BaseLeaveRequest, IRequest<Unit>
 {
-    [Required]
-    public LeaveType? LeaveType { get; set; }
-    
-    public bool? Approved { get; set; }
-    
-    [Required]
+    public int Id { get; set; }
+    public string RequestComments { get; set; } = string.Empty;
     public bool Cancelled { get; set; }
 }

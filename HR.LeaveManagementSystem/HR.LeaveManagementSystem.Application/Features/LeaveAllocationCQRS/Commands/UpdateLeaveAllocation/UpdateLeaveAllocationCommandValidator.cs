@@ -1,26 +1,49 @@
 ﻿using FluentValidation;
+using HR.LeaveManagementSystem.Application.Contracts.Persistence;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Commands.UpdateLeaveAllocation;
 
 public class UpdateLeaveAllocationCommandValidator : AbstractValidator<UpdateLeaveAllocationCommand>
 {
-    public UpdateLeaveAllocationCommandValidator()
+    private readonly ILeaveTypeRepository _leaveTypeRepository;
+    private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+    public UpdateLeaveAllocationCommandValidator(
+        ILeaveTypeRepository leaveTypeRepository,
+        ILeaveAllocationRepository leaveAllocationRepository)
     {
-        RuleFor(command => command.LeaveType)
-            .NotNull()
-            .NotEmpty()
-            .WithMessage("{PropertyName} is required");
+        _leaveTypeRepository = leaveTypeRepository;
+        _leaveAllocationRepository = _leaveAllocationRepository;
+
+
+        RuleFor(command => command.LeaveTypeId)
+            .GreaterThan(0)
+            .MustAsync(LeaveTypeMustExists)
+            .WithMessage("{PropertyName} does not exists");
 
         RuleFor(command => command.NumberOfDays)
-            .LessThan(1)
-            .WithMessage("{PropertyName} can't be less than 1.")
-            .GreaterThan(100)
-            .WithMessage("{PropertyName} can't be more than 100");
-        
+            .GreaterThan(0)
+            .WithMessage("{PropertyName} must be grater than {ComparisonValue}");
+
         RuleFor(command => command.Period)
-            .LessThan(1)
-            .WithMessage("{PropertyName} can't be less than 1.")
-            .GreaterThan(100)
-            .WithMessage("{PropertyName} can't be more than 100");
+            .GreaterThanOrEqualTo(DateTime.Now.Year)
+            .WithMessage("{PropertyName} must be after {ComparisonValue}");
+
+        RuleFor(command => command.Id)
+            .NotNull()
+            .MustAsync(LeaveAllocationMustExists)
+            .WithMessage("{PropertyName} must be present");
+
+    }
+
+    private async Task<bool> LeaveTypeMustExists(int id, CancellationToken token)
+    {
+        var leaveType = await _leaveTypeRepository.GetByIdAsync(id);
+        return leaveType != null;
+    }
+
+    private async Task<bool> LeaveAllocationMustExists(int id, CancellationToken token)
+    {
+        var leaveAllocation = await _leaveAllocationRepository.GetByIdAsync(id);
+        return leaveAllocation != null;
     }
 }
