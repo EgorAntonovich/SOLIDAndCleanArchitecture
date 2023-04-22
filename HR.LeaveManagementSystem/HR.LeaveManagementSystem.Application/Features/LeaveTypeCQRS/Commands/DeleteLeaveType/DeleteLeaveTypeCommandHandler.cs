@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HR.LeaveManagementSystem.Application.Contracts.Logging;
+﻿using HR.LeaveManagementSystem.Application.Contracts.Logging;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
 using HR.LeaveManagementSystem.Application.Exceptions;
 using HR.LeaveManagementSystem.Domain;

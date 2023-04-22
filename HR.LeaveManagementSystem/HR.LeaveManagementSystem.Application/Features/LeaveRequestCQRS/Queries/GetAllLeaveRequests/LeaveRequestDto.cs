@@ -1,5 +1,4 @@
 ﻿using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Queries.GetAllLeaveTypes;
-using HR.LeaveManagementSystem.Domain;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetAllLeaveRequests;
 

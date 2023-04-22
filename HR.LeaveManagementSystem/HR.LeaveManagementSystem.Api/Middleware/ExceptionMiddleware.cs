@@ -1,8 +1,6 @@
 using System.Net;
 using HR.LeaveManagementSystem.Api.Models;
 using HR.LeaveManagementSystem.Application.Exceptions;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace HR.LeaveManagementSystem.Api.Middleware;
 

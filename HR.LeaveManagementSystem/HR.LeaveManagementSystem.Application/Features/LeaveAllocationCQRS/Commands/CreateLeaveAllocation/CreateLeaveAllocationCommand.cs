@@ -1,5 +1,4 @@
-﻿using HR.LeaveManagementSystem.Domain;
-using MediatR;
+﻿using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Commands.CreateLeaveAllocation;
 

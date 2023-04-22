@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Shared;
-using HR.LeaveManagementSystem.Domain;
+﻿using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Shared;
 using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Commands.CreateLeaveRequest;
