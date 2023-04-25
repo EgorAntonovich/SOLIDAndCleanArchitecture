@@ -1,18 +1,22 @@
-﻿using HR.LeaveManagementSystem.Application.Features.LeaveTypeCQRS.Queries.GetAllLeaveTypes;
+﻿using HR.LeaveManagementSystem.Domain;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetAllLeaveRequests;
 
 public class LeaveRequestDto
 {
+    public int Id { get; set; }
+    
     public DateTime StartDay { get; set; }
 
     public DateTime EndDate { get; set; }
     
-    public LeaveTypeDto LeaveType { get; set; }
+    public LeaveType? LeaveType { get; set; }
+    
+    public int LeaveTypeId { get; set; }
 
     public DateTime DateRequested { get; set; }
     
-    public string RequestingEmployeeId { get; set; }
+    public string RequestingEmployeeId { get; set; } = string.Empty;
     
     public bool? Approved { get; set; }
 }

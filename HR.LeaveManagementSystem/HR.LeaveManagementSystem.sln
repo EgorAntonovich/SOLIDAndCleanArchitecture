@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagementSystem.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagementSystem.Api", "HR.LeaveManagementSystem.Api\HR.LeaveManagementSystem.Api.csproj", "{45A7116F-3268-4220-A30F-0F6D9548393E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagementSystem.Application.UnitTests", "HR.LeaveManagementSystem.Application.UnitTests\HR.LeaveManagementSystem.Application.UnitTests.csproj", "{5DEA7702-A1D9-4CD2-AD2D-77D49012EB1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagementSystem.Persistence.IntegrationTests", "HR.LeaveManagementSystem.Persistence.IntegrationTests\HR.LeaveManagementSystem.Persistence.IntegrationTests.csproj", "{944BEEFE-F5FF-4308-98A7-887388F93123}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,8 @@ Global
 		{58AE8ED8-27BA-4C4C-BF4A-C02CF9414048} = {70357804-CA96-401D-B9A3-50A998F40662}
 		{D3BD9332-C5F2-4F56-9CC6-C7EE20F063EF} = {70357804-CA96-401D-B9A3-50A998F40662}
 		{45A7116F-3268-4220-A30F-0F6D9548393E} = {B62E203F-C094-4926-9CAF-187276B106A2}
+		{5DEA7702-A1D9-4CD2-AD2D-77D49012EB1F} = {EF3C5FE6-2BF4-4FAA-8569-DE2505499A3F}
+		{944BEEFE-F5FF-4308-98A7-887388F93123} = {EF3C5FE6-2BF4-4FAA-8569-DE2505499A3F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1BE1B263-EDA3-4A91-BFF6-704F90F550FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -59,5 +65,13 @@ Global
 		{45A7116F-3268-4220-A30F-0F6D9548393E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45A7116F-3268-4220-A30F-0F6D9548393E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45A7116F-3268-4220-A30F-0F6D9548393E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DEA7702-A1D9-4CD2-AD2D-77D49012EB1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DEA7702-A1D9-4CD2-AD2D-77D49012EB1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DEA7702-A1D9-4CD2-AD2D-77D49012EB1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DEA7702-A1D9-4CD2-AD2D-77D49012EB1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{944BEEFE-F5FF-4308-98A7-887388F93123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944BEEFE-F5FF-4308-98A7-887388F93123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944BEEFE-F5FF-4308-98A7-887388F93123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944BEEFE-F5FF-4308-98A7-887388F93123}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
