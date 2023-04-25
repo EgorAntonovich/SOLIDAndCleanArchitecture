@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
 using HR.LeaveManagementSystem.Application.Exceptions;
-using HR.LeaveManagementSystem.Application.Features.LeaveAllocationCQRS.Queries.GetAllLeaveAllocations;
 using HR.LeaveManagementSystem.Domain;
 using MediatR;
 

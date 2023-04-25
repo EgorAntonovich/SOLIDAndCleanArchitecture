@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using HR.LeaveManagementSystem.Application.Contracts.Email;
 using HR.LeaveManagementSystem.Application.Contracts.Logging;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
 using HR.LeaveManagementSystem.Application.Exceptions;
-using HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetAllLeaveRequests;
 using HR.LeaveManagementSystem.Application.Models.Email;
 using HR.LeaveManagementSystem.Domain;
 using MediatR;

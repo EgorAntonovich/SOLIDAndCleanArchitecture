@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using HR.LeaveManagementSystem.Application.Contracts.Logging;
 using HR.LeaveManagementSystem.Application.Contracts.Persistence;
-using HR.LeaveManagementSystem.Domain;
 using MediatR;
 
 namespace HR.LeaveManagementSystem.Application.Features.LeaveRequestCQRS.Queries.GetAllLeaveRequests;
